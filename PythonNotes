@@ -1,0 +1,104 @@
+--PYTHON NOTES--
+# Creating the raw dictionary and passing into a dataframe
+
+import pandas as pd
+
+# Creating the raw dictionary
+data = { 
+    'col1': [1, 2, 3], 
+    'col2': ['A', 'B', 'C'], 
+    'col3': [True, False, True] 
+}
+#Creating the DataFrame (df)
+df = pd.DataFrame(data)
+
+#---------------------------------------------------------
+
+#For checking the structure of dataframe
+df.shape
+# for checking the element of the dataframe
+df.size
+
+#--These are the only functions which don't have bracktes
+
+#----------------------------------------------------------
+
+#For fecthing the information related to the dataframe
+
+df.info()
+
+#-----------------------------------------------------------
+
+#For fetching the top 5 rows from the dataframe/ specific no. of rows
+df.head()
+df.head(5)
+
+#----------------------------------------------------------
+
+#For reading the data from CSV files
+
+df = pd.read_csv(r"Path of the file")
+
+#----------------------------------------------------------
+
+# For fetching the statstics descriptive for dataframe like mean,median,min,max,percentiles and std deviation
+
+df.describe()
+
+#----------------------------------------------------------
+
+#For fetching the percentile of a numeric column
+
+df["Column Name"].quantile(0.60)
+
+#-----------------------------------------------------------
+
+#For fetching mean,median,min,max,percentiles,sum,count,std deviation of a single Numeric column 
+
+df["Column Name"].min()
+df["Column Name"].max()
+df["Column Name"].mean()
+df["Column Name"].median()
+df["Column Name"].mode()
+df["Column Name"].std()
+df["Column Name"].count()
+df["Column Name"].sum()
+
+#For fetching the unique values present in dataframe/Single Column
+
+df.nunique()
+df["Column Name"].nunique()
+
+#For fetching the Cleans strings like " 15% ", "20 %", or "5.5%" into clean numeric strings like "15", "20", "5.5"
+df["discount_rate"] = df["discount_rate"].str.replace(r'[% ]', '', regex=True)
+
+#For fetching the Cleans mixed formats like "INV-9901-A" or "PO#4502" to leave only the digits "9901" and "4502"
+df["invoice_id"] = df["invoice_id"].str.replace(r'[^0-9]', '', regex=True)
+
+#For Changing the datatype of the column
+
+df["Column Name"].astype(type of variable)
+df["TransactionID"].astype(str)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
